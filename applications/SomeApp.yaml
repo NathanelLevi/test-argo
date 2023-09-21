@@ -4,7 +4,7 @@ metadata:
   name: nati-test
   namespace: argocd
 spec:
-  project: default
+  project: nati-project
   destination:
     server: https://kubernetes.default.svc
     namespace: natis-namespace
