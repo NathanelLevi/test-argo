@@ -15,3 +15,9 @@ spec:
     - repoURL: https://github.com/argoproj/argocd-example-apps.git
       path: guestbook
       targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true    # Automatically remove resources not declared in the source repository
+      selfHeal: true # Automatically reapply manifests if they drift from the desired state
+    syncOptions:
+      - CreateNamespace=true
