@@ -1,19 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
   name: nati-test
   namespace: argocd
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: natis-namespace
+    namespace: helmfile-namespace
   sources:
-    - chart: elasticsearch
-      repoURL: https://helm.elastic.co
-      targetRevision: 8.5.1
-    - repoURL: https://github.com/argoproj/argocd-example-apps.git
-      path: guestbook
+    - repoURL: https://github.com/NathanelLevi/helmfile-demo.git
+      path: helmfiles
       targetRevision: HEAD
   syncPolicy:
     automated:
